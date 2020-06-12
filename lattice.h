@@ -32,7 +32,7 @@ std::pair<ArrayXXf, ArrayXXf> lattice(Index h, Index w, unsigned int connect = 0
 
 	// Get list of edges
 	Index N = h * w;
-	auto line = ArrayXf::LinSpaced(N, 1, N).eval();
+	auto line = ArrayXf::LinSpaced(N, 0, N - 1).eval();
 	auto mat = Map<ArrayXXf>(line.data(), h, w);
 	auto clipped = ArrayXXf(mat.topRows(h - 1));
 	auto topDownEdges = Map<ArrayXXf>(clipped.data(), (h - 1) * w, 1);
